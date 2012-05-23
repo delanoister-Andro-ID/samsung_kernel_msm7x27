@@ -1049,7 +1049,7 @@ void sensor_rough_control(void __user *arg)
 
 				case PCAM_CPU_ONDEMAND:{
 				PCAM_DEBUG("now ondemand");
-				cpufreq_direct_set_policy(0, "ondemand");
+				/* cpufreq_direct_set_policy(0, "ondemand"); */
 				}
 				break;	
 
@@ -1172,7 +1172,7 @@ void cam_pw(int status)
 		gpio_set_value(3,0); //VDDD
 		udelay(1);
 		vreg_disable(vreg_cam_out10); //AF
-		cpufreq_direct_set_policy(0, "ondemand");
+		/* cpufreq_direct_set_policy(0, "ondemand"); */
 	}
 }
 
@@ -1588,7 +1588,9 @@ static int s5k5ccaf_regs_table_write(char *name)
 
 	while (1) {	
 		/* Find Address */	
+
 		reg = strstr(start,"{0x");		
+
 		if (reg)
 			start = (reg + 16);
 		if ((reg == NULL) || (reg > end))
