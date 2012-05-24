@@ -357,7 +357,7 @@ struct usb_composite_dev {
 
 	struct switch_dev sdev;
 	/* used by usb_composite_force_reset to avoid signalling switch changes */
-	bool				mute_switch;
+	bool        mute_switch;
 	struct work_struct switch_work;
 };
 

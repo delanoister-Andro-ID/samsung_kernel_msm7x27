@@ -113,9 +113,9 @@ void usb_composite_force_reset(struct usb_composite_dev *cdev)
 	spin_lock_irqsave(&cdev->lock, flags);
 	/* force reenumeration */
 	if (cdev && cdev->gadget &&
-			cdev->gadget->speed != USB_SPEED_UNKNOWN) {
-		/* avoid sending a disconnect switch event until after we disconnect */
-		cdev->mute_switch = 1;
+	  cdev->gadget->speed != USB_SPEED_UNKNOWN) {
+	/* avoid sending a disconnect switch event until after we disconnect */
+	cdev->mute_switch = 1;
 		spin_unlock_irqrestore(&cdev->lock, flags);
 
 		usb_gadget_disconnect(cdev->gadget);
@@ -831,8 +831,7 @@ composite_setup(struct usb_gadget *gadget, const struct usb_ctrlrequest *ctrl)
 	u8				endp;
 	int tmp = intf;
 	int id = 0;
-
-
+	
 	/* partial re-init of the response message; the function or the
 	 * gadget might need to intercept e.g. a control-OUT completion
 	 * when we delegate to it.
@@ -1033,7 +1032,7 @@ unknown:
 done:
 	/* device either stalls (value < 0) or reports success */
 	if (cdev->mute_switch)
-		cdev->mute_switch = 0;
+	  cdev->mute_switch = 0;
 	return value;
 }
 
@@ -1056,20 +1055,19 @@ static void composite_disconnect(struct usb_gadget *gadget)
 /* mute switch bug fix  */	
 #ifdef CONFIG_USB_SAMSUNG_VBUS_CHECK
 	b_session= gadget->ops->get_vbus_state(gadget);
-
+	
 	if (b_session && cdev->mute_switch)
-		cdev->mute_switch = 0;
-	else
-	{		
-		if ( cdev->mute_switch )
-			cdev->mute_switch=0;
-		schedule_work(&cdev->switch_work);
+	  cdev->mute_switch = 0;
+	else{
+	  if ( cdev->mute_switch )
+	    cdev->mute_switch=0;
+	  schedule_work(&cdev->switch_work);
 	}
 #else
 	if (cdev->mute_switch)
-		cdev->mute_switch = 0;
+	  cdev->mute_switch = 0;
 	else
-		schedule_work(&cdev->switch_work);
+	  schedule_work(&cdev->switch_work);
 #endif
 	spin_unlock_irqrestore(&cdev->lock, flags);
 }
@@ -1172,7 +1170,7 @@ composite_switch_work(struct work_struct *data)
 	struct usb_composite_dev	*cdev =
 		container_of(data, struct usb_composite_dev, switch_work);
 	struct usb_configuration *config = cdev->config;
-
+	
 	if (config)
 		switch_set_state(&cdev->sdev, config->bConfigurationValue);
 	else
