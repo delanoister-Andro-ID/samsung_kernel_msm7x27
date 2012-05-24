@@ -1,0 +1,1 @@
+cmd_drivers/uvbeni/beniuv.ko := /home/delano/samsung_kernel_msm7x27/source/arm-2011.03/bin/arm-none-eabi-ld -EL -r  -T /home/delano/samsung_kernel_msm7x27/source/scripts/module-common.lds --build-id -o drivers/uvbeni/beniuv.ko drivers/uvbeni/beniuv.o drivers/uvbeni/beniuv.mod.o

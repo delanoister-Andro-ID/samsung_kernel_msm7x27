@@ -122,6 +122,8 @@ source "drivers/uvgio/Kconfig"
 
 source "drivers/uvcooper/Kconfig"
 
+source "drivers/uvbeni/Kconfig"
+
 source "drivers/platform/Kconfig"
 
 source "drivers/dpram/Kconfig"

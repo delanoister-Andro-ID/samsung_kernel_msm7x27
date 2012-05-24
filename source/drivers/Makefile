@@ -117,6 +117,7 @@ obj-$(CONFIG_VLYNQ)		+= vlynq/
 obj-$(CONFIG_STAGING)		+= staging/
 obj-$(CONFIG_COOPER_UNDERVOLT)	+= uvcooper/
 obj-$(CONFIG_GIO_UNDERVOLT)	+= uvgio/
+obj-$(CONFIG_BENI_UNDERVOLT)	+= uvbeni/
 obj-y				+= platform/
 obj-y				+= ieee802154/
 obj-y				+= dpram/
